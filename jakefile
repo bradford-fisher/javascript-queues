@@ -1,0 +1,18 @@
+const desc = require("jake").desc;
+const execSync = require("child_process").execSync;
+const task = require("jake").task;
+
+desc("run unit tests");
+task("test", function()
+{
+    const pattern = "source/test/**/*.test.js";
+    const command = `npx mocha "${pattern}"`;
+    const options = { stdio: "inherit" };
+
+    hush(() => execSync(command, options));
+});
+
+function hush(callback)
+{
+    try { callback() } catch {}
+}
