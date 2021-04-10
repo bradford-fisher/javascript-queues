@@ -14,5 +14,8 @@
     "author": {
         "name": "Bradford Fisher",
         "email": "mail@bradfordfisher.com"
+    },
+    "bugs": {
+        "url": "https://github.com/bradford-fisher/javascript-queues/issues"
     }
 }
