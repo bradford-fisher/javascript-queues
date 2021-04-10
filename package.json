@@ -10,5 +10,9 @@
         "nyc": "^15.1.0",
         "rimraf": "^3.0.2"
     },
-    "keywords": [ "queue" ]
+    "keywords": [ "queue" ],
+    "author": {
+        "name": "Bradford Fisher",
+        "email": "mail@bradfordfisher.com"
+    }
 }
