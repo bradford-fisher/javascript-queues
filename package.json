@@ -2,6 +2,7 @@
     "name": "@bradford-fisher/queues",
     "version": "0.0.0",
     "description": "Queue implementations",
+    "license": "MIT",
     "main": "./source/main/javascript/index.js",
     "devDependencies": {
         "jake": "^10.8.2",
