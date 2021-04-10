@@ -2,15 +2,27 @@ const desc = require("jake").desc;
 const execSync = require("child_process").execSync;
 const task = require("jake").task;
 
+desc("run unit tests with coverage");
+task("coverage", function()
+{
+    test(true);
+});
+
 desc("run unit tests");
 task("test", function()
 {
+    test();
+});
+
+function test(coverage = false)
+{
+    const nyc = coverage ? "nyc" : "";
     const pattern = "source/test/**/*.test.js";
-    const command = `npx mocha "${pattern}"`;
+    const command = `npx ${nyc} mocha "${pattern}"`;
     const options = { stdio: "inherit" };
 
     hush(() => execSync(command, options));
-});
+}
 
 function hush(callback)
 {
