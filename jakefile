@@ -1,6 +1,13 @@
 const desc = require("jake").desc;
 const execSync = require("child_process").execSync;
+const rimraf = require("rimraf");
 const task = require("jake").task;
+
+desc("clean working directory");
+task("clean", function()
+{
+    rimraf.sync("./.nyc_output");
+});
 
 desc("run unit tests with coverage");
 task("coverage", function()
