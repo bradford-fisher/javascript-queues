@@ -39,6 +39,11 @@ class ArrayQueue
         instances.get(this).enqueue(item);
     }
 
+    peek()
+    {
+        return instances.get(this).peek();
+    }
+
     static get MAXIMUM_CAPACITY()
     {
         return MAXIMUM_CAPACITY;
@@ -96,6 +101,11 @@ class EmptyArrayQueue
     {
         throw new FullQueueError();
     }
+
+    peek()
+    {
+        throw new EmptyQueueError();
+    }
 }
 
 class StandardArrayQueue
@@ -137,6 +147,14 @@ class StandardArrayQueue
             throw new UndefinedItemError();
 
         this.items.push(item);
+    }
+
+    peek()
+    {
+        if (this.isEmpty)
+            throw new EmptyQueueError();
+
+        return this.items[this.size - 1];
     }
 }
 

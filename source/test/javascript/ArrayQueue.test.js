@@ -107,6 +107,17 @@ suite("ArrayQueue", function()
         assert.strictEqual(queue.size, initialSize - 1);
     });
 
+    test("does not change size with each peek", function()
+    {
+        queue.enqueue("a");
+        queue.enqueue("b");
+        const initialSize = queue.size;
+
+        assert.strictEqual(queue.peek(), "b");
+        assert.strictEqual(queue.peek(), "b");
+        assert.strictEqual(queue.size, initialSize);
+    });
+
     test("cannot enqueue undefined", function()
     {
         assert.throws(() => queue.enqueue(undefined));
@@ -135,6 +146,19 @@ suite("ArrayQueue", function()
         assert.strictEqual(queue.isEmpty, true);
         assert.throws(() => queue.dequeue());
     });
+
+    test("cannot peek when empty", function()
+    {
+        queue.enqueue("a");
+        queue.enqueue("b");
+        queue.enqueue("c");
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+
+        assert.strictEqual(queue.isEmpty, true);
+        assert.throws(() => queue.peek());
+    });
 });
 
 suite("ArrayQueue :: Zero Capacity", function()
@@ -156,5 +180,11 @@ suite("ArrayQueue :: Zero Capacity", function()
     {
         assert.strictEqual(queue.isEmpty, true);
         assert.throws(() => queue.dequeue());
+    });
+
+    test("cannot peek", function()
+    {
+        assert.strictEqual(queue.isEmpty, true);
+        assert.throws(() => queue.peek());
     });
 });
