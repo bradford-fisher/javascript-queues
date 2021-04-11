@@ -14,6 +14,7 @@ suite("ArrayQueue :: Creation", function()
         assert.strictEqual(queue.capacity !== undefined, true);
         assert.strictEqual(queue.capacity, ArrayQueue.MAXIMUM_CAPACITY);
         assert.strictEqual(queue.size, 0);
+        assert.strictEqual(queue.isEmpty, true);
     });
 
     test("can be created with positive capacity", function()
@@ -23,6 +24,7 @@ suite("ArrayQueue :: Creation", function()
         assert.strictEqual(queue instanceof ArrayQueue, true);
         assert.strictEqual(queue.capacity, 7);
         assert.strictEqual(queue.size, 0);
+        assert.strictEqual(queue.isEmpty, true);
     });
 
     test("can be created with zero capacity", function()
@@ -32,6 +34,7 @@ suite("ArrayQueue :: Creation", function()
         assert.strictEqual(queue instanceof ArrayQueue, true);
         assert.strictEqual(queue.capacity, 0);
         assert.strictEqual(queue.size, 0);
+        assert.strictEqual(queue.isEmpty, true);
     });
 
     test("cannot be created with undefined capacity", function()
@@ -86,6 +89,7 @@ suite("ArrayQueue", function()
         const initialSize = queue.size;
         queue.enqueue("a");
 
+        assert.strictEqual(queue.isEmpty, false);
         assert.strictEqual(queue.size, initialSize + 1);
     });
 
@@ -123,6 +127,7 @@ suite("ArrayQueue", function()
         queue.dequeue();
         queue.dequeue();
 
+        assert.strictEqual(queue.isEmpty, true);
         assert.throws(() => queue.dequeue());
     });
 });
@@ -143,6 +148,7 @@ suite("ArrayQueue :: Zero Capacity", function()
 
     test("cannot dequeue", function()
     {
+        assert.strictEqual(queue.isEmpty, true);
         assert.throws(() => queue.dequeue());
     });
 });
