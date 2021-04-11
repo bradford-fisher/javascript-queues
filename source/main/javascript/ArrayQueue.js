@@ -19,6 +19,11 @@ class ArrayQueue
         return instances.get(this).isEmpty;
     }
 
+    get isFull()
+    {
+        return instances.get(this).isFull;
+    }
+
     get size()
     {
         return instances.get(this).size;
@@ -72,6 +77,11 @@ class EmptyArrayQueue
         return true;
     }
 
+    get isFull()
+    {
+        return true;
+    }
+
     get size()
     {
         return MINIMUM_CAPACITY;
@@ -101,6 +111,11 @@ class StandardArrayQueue
         return this.size === MINIMUM_CAPACITY;
     }
 
+    get isFull()
+    {
+        return this.size === this.capacity;
+    }
+
     get size()
     {
         return this.items.length;
@@ -116,7 +131,7 @@ class StandardArrayQueue
 
     enqueue(item)
     {
-        if (this.size === this.capacity)
+        if (this.isFull)
             throw new FullQueueError();
         if (item === undefined)
             throw new UndefinedItemError();
