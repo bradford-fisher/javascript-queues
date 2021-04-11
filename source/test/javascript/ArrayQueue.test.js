@@ -113,8 +113,8 @@ suite("ArrayQueue", function()
         queue.enqueue("b");
         const initialSize = queue.size;
 
-        assert.strictEqual(queue.peek(), "b");
-        assert.strictEqual(queue.peek(), "b");
+        assert.strictEqual(queue.peek(), "a");
+        assert.strictEqual(queue.peek(), "a");
         assert.strictEqual(queue.size, initialSize);
     });
 

@@ -154,7 +154,7 @@ class StandardArrayQueue
         if (this.isEmpty)
             throw new EmptyQueueError();
 
-        return this.items[this.size - 1];
+        return this.items[MINIMUM_CAPACITY];
     }
 }
 
